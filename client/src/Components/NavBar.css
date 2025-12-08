@@ -1,6 +1,6 @@
 
 .NavBar {
-  background: rgb(90, 232, 232);
+  background: rgb(109, 122, 218);
   height: 80px;
   display: flex;
   justify-content: center;
@@ -92,10 +92,11 @@
   display: flex;
   align-items: center;
   color: black;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 600;
   text-decoration: none;
   margin: 0;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   height: 100%;
 }
 

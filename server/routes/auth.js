@@ -218,6 +218,7 @@ router.put(
       if (req.body.name) user.name = req.body.name;
       if (req.body.phone) user.phone = req.body.phone;
       if (req.body.address) user.address = req.body.address;
+      if (req.body.servicesOffered && user.role === 'staff') user.servicesOffered = req.body.servicesOffered;
 
       await user.save();
 

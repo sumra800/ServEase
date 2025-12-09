@@ -246,8 +246,8 @@ function Booking() {
                     <div
                       key={provider._id}
                       className={`border rounded-xl p-4 cursor-pointer transition-all ${bookingData.assignedHelper === provider._id
-                          ? 'border-primary-500 bg-primary-50 ring-2 ring-primary-200'
-                          : 'border-gray-200 hover:border-primary-300 hover:shadow-md'
+                        ? 'border-primary-500 bg-primary-50 ring-2 ring-primary-200'
+                        : 'border-gray-200 hover:border-primary-300 hover:shadow-md'
                         }`}
                       onClick={() => handleProviderSelect(provider)}
                     >
@@ -373,7 +373,7 @@ function Booking() {
                   <div className="flex justify-between text-lg">
                     <span className="font-semibold">Total:</span>
                     <span className="font-bold text-primary-600">
-                      ₹{service.basePrice ? Math.round((service.basePrice / 4) * parseInt(bookingData.duration)) : 'Calculating...'}
+                      Rs.{service.basePrice ? Math.round((service.basePrice / 4) * parseInt(bookingData.duration)) : 'Calculating...'}
                     </span>
                   </div>
                 </div>

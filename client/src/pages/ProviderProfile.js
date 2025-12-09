@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useAppSelector } from '../store/hooks'; // Assuming you have this hook
-import { bookingsAPI, adminAPI } from '../utils/api'; // Or wherever you get user data
+import { useAppSelector } from '../store/hooks';
+import { bookingsAPI, adminAPI } from '../utils/api';
 import { FaUser, FaStar, FaArrowLeft, FaQuoteLeft } from 'react-icons/fa';
 import Card from '../Components/Card';
-import Button from '../Components/Button'; // Assuming you have this component
+import Button from '../Components/Button';
 import { motion } from 'framer-motion';
 
 function ProviderProfile() {
@@ -15,39 +15,18 @@ function ProviderProfile() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 
-    // We might need a way to fetch user details publicly if adminAPI.getUser is restricted.
-    // For now, assuming we can fetch basic provider info.
-    // If not, we might need a new public endpoint or expand getProviderReviews to return provider details.
-    // Currently getProviderReviews returns reviews and stats.
 
     useEffect(() => {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                // Fetch reviews
                 const reviewsData = await bookingsAPI.getProviderReviews(id);
                 if (reviewsData.success) {
                     setReviews(reviewsData.reviews);
                     setStats(reviewsData.stats);
                 }
 
-                // Fetch basic provider info - This is tricky if we don't have a public endpoint
-                // Let's try to get it from the bookings if possible, OR fallback to a placeholder
-                // Ideally, backend should return provider info with reviews or we create a public provider endpoint.
-                // For this iteration, I'll assume we might not get full provider details unless we add an endpoint.
-                // However, I can try to use the `adminAPI.getUser` if the current user is logged in, but that's for admins.
-                // Let's rely on the first review's "assignedHelper" population if available or just show generic info.
-                // Wait, I updated the backend to return stats and reviews. I didn't add provider info to the response root.
 
-                // TEMPORARY SOLUTION: Since we don't have a dedicated public 'get user' endpoint, 
-                // and we are restricted, I will use a placeholder or try to infer from loaded data if possible.
-                // BUT, for a better UX, I should simply update the backend to returning provider name/avatar in the getReviews endpoint?
-                // Let's stick to what we have. If I have `reviews`, I might not have the provider's own name/avatar unless I populated it in the backend logic for the *Review* object (which points to User).
-                // The backend populates 'user' (the reviewer), not the 'assignedHelper' details in the review list itself (which is the provider).
-
-                // Actually, let's just show "Service Provider" if we can't get the name, or use the ID. 
-                // A better approach for the USER REQUEST is to see the profile.
-                // I will assume for now we just show the reviews.
 
             } catch (err) {
                 setError('Failed to load profile');

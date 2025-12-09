@@ -50,7 +50,6 @@ function Register() {
     const result = await dispatch(registerUser(userData));
 
     if (registerUser.rejected.match(result)) {
-      // Error is handled by Redux state
     }
   };
 

@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const User = require('./models/User');
 
-// Load env vars
 dotenv.config();
 
 const createAdmin = async () => {

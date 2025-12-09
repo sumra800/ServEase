@@ -1,9 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-// @route   GET /api/services
-// @desc    Get all available services
-// @access  Public
+
 router.get('/', async (req, res) => {
   try {
     const services = [

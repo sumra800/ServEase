@@ -89,7 +89,7 @@ function PaymentModal({ isOpen, onClose, bookingId, amount, onPaymentSuccess }) 
         {step === 1 && (
           <div>
             <p className="text-lg font-semibold mb-4 text-gray-800">
-              Amount: ₹{amount}
+              Amount: Rs.{amount}
             </p>
             <p className="text-gray-600 mb-6">Select payment method:</p>
             <div className="space-y-3">
@@ -204,7 +204,7 @@ function MobileWalletForm({ method, onSubmit, amount, onBack }) {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="bg-gray-50 p-4 rounded-lg mb-4">
-        <p className="text-sm text-gray-600 mb-1">Please send <span className="font-bold">₹{amount}</span> to:</p>
+        <p className="text-sm text-gray-600 mb-1">Please send <span className="font-bold">Rs.{amount}</span> to:</p>
         <p className={`text-xl font-bold ${colorClass}`}>{methodName}: {merchantNumber}</p>
         <p className="text-xs text-gray-500 mt-2">
           After sending, please enter your mobile number and the Transaction ID (TID) below.
@@ -314,7 +314,7 @@ function BankTransferForm({ onSubmit, amount, onBack }) {
       </div>
       <div className="bg-gray-50 p-4 rounded-lg">
         <p className="text-sm text-gray-600 mb-2">Transfer Amount:</p>
-        <p className="text-2xl font-bold text-gray-800">₹{amount}</p>
+        <p className="text-2xl font-bold text-gray-800">Rs.{amount}</p>
         <p className="text-xs text-gray-500 mt-2">
           Account details will be provided after booking confirmation
         </p>

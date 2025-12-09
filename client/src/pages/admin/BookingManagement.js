@@ -180,7 +180,7 @@ function BookingManagement() {
                           <span className="font-medium">Time:</span> {booking.time}
                         </div>
                         <div>
-                          <span className="font-medium">Amount:</span> ₹{booking.totalAmount}
+                          <span className="font-medium">Amount:</span> Rs.{booking.totalAmount}
                         </div>
                       </div>
                       {booking.assignedHelper && (

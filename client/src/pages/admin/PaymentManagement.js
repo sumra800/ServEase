@@ -72,7 +72,7 @@ function PaymentManagement() {
           <h2 className="text-2xl font-semibold text-gray-800">Payment Management</h2>
           <div className="text-right">
             <p className="text-sm text-gray-600">Total Revenue</p>
-            <p className="text-2xl font-bold text-primary-600">₹{totalAmount.toLocaleString()}</p>
+            <p className="text-2xl font-bold text-primary-600">Rs.{totalAmount.toLocaleString()}</p>
           </div>
         </div>
       </div>
@@ -147,7 +147,7 @@ function PaymentManagement() {
                       {payment.booking?.service || 'N/A'}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                      ₹{payment.amount}
+                      Rs.{payment.amount}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800">

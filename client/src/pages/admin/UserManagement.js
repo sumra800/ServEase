@@ -12,8 +12,6 @@ function UserManagement() {
     page: 1,
   });
   const [pagination, setPagination] = useState({});
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [showEditModal, setShowEditModal] = useState(false);
 
   const fetchUsers = async () => {
     try {
@@ -189,8 +187,8 @@ function UserManagement() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => {
-                          setSelectedUser(user);
-                          setShowEditModal(true);
+                          // TODO: Implement edit modal
+                          alert('Edit functionality coming soon');
                         }}
                         className="text-primary-600 hover:text-primary-900"
                       >

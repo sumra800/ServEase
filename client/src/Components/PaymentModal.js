@@ -4,7 +4,6 @@ import { paymentsAPI } from '../utils/api';
 
 function PaymentModal({ isOpen, onClose, bookingId, amount, onPaymentSuccess }) {
   const [paymentMethod, setPaymentMethod] = useState('jazzcash');
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [step, setStep] = useState(1); // 1: select method, 2: payment form, 3: success
 

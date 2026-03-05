@@ -15,16 +15,16 @@ function Footer() {
                             Your trusted partner for home services. Professional, reliable, and convenient.
                         </p>
                         <div className="flex gap-4">
-                            <a href="#" className="text-neutral-400 hover:text-primary-400 transition-colors text-xl">
+                            <a href="#!" className="text-neutral-400 hover:text-primary-400 transition-colors text-xl">
                                 <FaFacebook />
                             </a>
-                            <a href="#" className="text-neutral-400 hover:text-primary-400 transition-colors text-xl">
+                            <a href="#!" className="text-neutral-400 hover:text-primary-400 transition-colors text-xl">
                                 <FaTwitter />
                             </a>
-                            <a href="#" className="text-neutral-400 hover:text-primary-400 transition-colors text-xl">
+                            <a href="#!" className="text-neutral-400 hover:text-primary-400 transition-colors text-xl">
                                 <FaInstagram />
                             </a>
-                            <a href="#" className="text-neutral-400 hover:text-primary-400 transition-colors text-xl">
+                            <a href="#!" className="text-neutral-400 hover:text-primary-400 transition-colors text-xl">
                                 <FaLinkedin />
                             </a>
                         </div>

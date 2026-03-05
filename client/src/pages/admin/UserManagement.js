@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaSearch, FaCheckCircle, FaTimesCircle, FaEdit, FaTrash, FaUserCheck } from 'react-icons/fa';
+import { FaSearch, FaCheckCircle, FaTimesCircle, FaEdit, FaTrash } from 'react-icons/fa';
 import { adminAPI } from '../../utils/api';
 
 function UserManagement() {
@@ -12,12 +12,6 @@ function UserManagement() {
     page: 1,
   });
   const [pagination, setPagination] = useState({});
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [showEditModal, setShowEditModal] = useState(false);
-
-  useEffect(() => {
-    fetchUsers();
-  }, [filters]);
 
   const fetchUsers = async () => {
     try {
@@ -37,6 +31,11 @@ function UserManagement() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchUsers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters]);
 
   const handleVerify = async (userId) => {
     try {
@@ -153,11 +152,10 @@ function UserManagement() {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{user.email}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{user.phone}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <span className={`px-2 py-1 text-xs rounded-full ${
-                      user.role === 'admin' ? 'bg-purple-100 text-purple-800' :
-                      user.role === 'staff' ? 'bg-blue-100 text-blue-800' :
-                      'bg-gray-100 text-gray-800'
-                    }`}>
+                    <span className={`px-2 py-1 text-xs rounded-full ${user.role === 'admin' ? 'bg-purple-100 text-purple-800' :
+                        user.role === 'staff' ? 'bg-blue-100 text-blue-800' :
+                          'bg-gray-100 text-gray-800'
+                      }`}>
                       {user.role}
                     </span>
                   </td>
@@ -165,11 +163,10 @@ function UserManagement() {
                     {user.role === 'staff' && (
                       <button
                         onClick={() => handleVerify(user._id)}
-                        className={`flex items-center gap-1 px-2 py-1 text-xs rounded ${
-                          user.isVerified
+                        className={`flex items-center gap-1 px-2 py-1 text-xs rounded ${user.isVerified
                             ? 'bg-green-100 text-green-800'
                             : 'bg-yellow-100 text-yellow-800'
-                        }`}
+                          }`}
                       >
                         {user.isVerified ? (
                           <>

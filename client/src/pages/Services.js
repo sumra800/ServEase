@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaHome, FaBaby, FaHeart, FaDog, FaCalendarAlt, FaClock, FaUser, FaCheckCircle, FaTimes } from 'react-icons/fa';
+import { FaHome, FaBaby, FaHeart, FaDog, FaCheckCircle, FaTimes } from 'react-icons/fa';
 import servicesImage from '../assets/3.jpeg';
 import { servicesAPI } from '../utils/api';
 import Button from '../Components/Button';

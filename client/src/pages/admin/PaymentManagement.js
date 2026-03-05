@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaCheckCircle, FaTimesCircle, FaSearch } from 'react-icons/fa';
+import { FaCheckCircle } from 'react-icons/fa';
 import { adminAPI } from '../../utils/api';
 
 function PaymentManagement() {
@@ -12,10 +12,6 @@ function PaymentManagement() {
   });
   const [pagination, setPagination] = useState({});
   const [totalAmount, setTotalAmount] = useState(0);
-
-  useEffect(() => {
-    fetchPayments();
-  }, [filters]);
 
   const fetchPayments = async () => {
     try {
@@ -36,6 +32,11 @@ function PaymentManagement() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchPayments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters]);
 
   const handleVerifyPayment = async (paymentId) => {
     if (!window.confirm('Verify this payment as completed?')) return;

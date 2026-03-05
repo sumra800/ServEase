@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaSearch, FaUser, FaCalendarAlt, FaClock, FaCheckCircle } from 'react-icons/fa';
-import { adminAPI } from '../../utils/api';
-import { bookingsAPI } from '../../utils/api';
+import { adminAPI, bookingsAPI } from '../../utils/api';
 
 function BookingManagement() {
   const [bookings, setBookings] = useState([]);
@@ -15,10 +13,16 @@ function BookingManagement() {
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [showAssignModal, setShowAssignModal] = useState(false);
 
-  useEffect(() => {
-    fetchBookings();
-    fetchStaff();
-  }, [filters]);
+  const fetchStaff = async () => {
+    try {
+      const response = await adminAPI.getStaff({ verified: 'true' });
+      if (response.success) {
+        setStaff(response.staff);
+      }
+    } catch (error) {
+      console.error('Error fetching staff:', error);
+    }
+  };
 
   const fetchBookings = async () => {
     try {
@@ -39,16 +43,11 @@ function BookingManagement() {
     }
   };
 
-  const fetchStaff = async () => {
-    try {
-      const response = await adminAPI.getStaff({ verified: 'true' });
-      if (response.success) {
-        setStaff(response.staff);
-      }
-    } catch (error) {
-      console.error('Error fetching staff:', error);
-    }
-  };
+  useEffect(() => {
+    fetchBookings();
+    fetchStaff();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters]);
 
   const handleAssignHelper = async (bookingId, helperId) => {
     try {

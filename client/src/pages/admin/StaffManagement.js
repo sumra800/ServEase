@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaCheckCircle, FaTimesCircle, FaUserCheck, FaSearch } from 'react-icons/fa';
+import { FaCheckCircle, FaTimesCircle, FaSearch } from 'react-icons/fa';
 import { adminAPI } from '../../utils/api';
 
 function StaffManagement() {
@@ -9,10 +9,6 @@ function StaffManagement() {
     verified: '',
     search: '',
   });
-
-  useEffect(() => {
-    fetchStaff();
-  }, [filters]);
 
   const fetchStaff = async () => {
     try {
@@ -27,6 +23,11 @@ function StaffManagement() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchStaff();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters]);
 
   const handleVerify = async (staffId) => {
     try {
@@ -104,11 +105,10 @@ function StaffManagement() {
                   </div>
                   <button
                     onClick={() => handleVerify(member._id)}
-                    className={`p-2 rounded ${
-                      member.isVerified
+                    className={`p-2 rounded ${member.isVerified
                         ? 'bg-green-100 text-green-600'
                         : 'bg-yellow-100 text-yellow-600'
-                    }`}
+                      }`}
                     title={member.isVerified ? 'Verified' : 'Not Verified'}
                   >
                     {member.isVerified ? <FaCheckCircle /> : <FaTimesCircle />}
@@ -128,11 +128,10 @@ function StaffManagement() {
                     <span className="font-semibold text-primary-600">{member.activeAssignments || 0}</span>
                   </div>
                   <div className="mt-4 pt-4 border-t border-gray-200">
-                    <span className={`px-3 py-1 rounded-full text-xs ${
-                      member.isVerified
+                    <span className={`px-3 py-1 rounded-full text-xs ${member.isVerified
                         ? 'bg-green-100 text-green-800'
                         : 'bg-yellow-100 text-yellow-800'
-                    }`}>
+                      }`}>
                       {member.isVerified ? 'Verified Staff' : 'Pending Verification'}
                     </span>
                   </div>

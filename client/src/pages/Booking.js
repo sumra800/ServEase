@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { FaCalendarAlt, FaClock, FaUser, FaMapMarkerAlt, FaCreditCard, FaCheckCircle } from 'react-icons/fa';
+import { FaCalendarAlt, FaClock, FaMapMarkerAlt, FaCreditCard, FaCheckCircle } from 'react-icons/fa';
 import { useAppSelector } from '../store/hooks';
 import { bookingsAPI, providersAPI } from '../utils/api';
 import PaymentModal from '../Components/PaymentModal';
-import Card from '../Components/Card'; // Assuming Card is available
 
 function Booking() {
   const location = useLocation();

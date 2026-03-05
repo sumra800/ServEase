@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useAppSelector } from '../store/hooks';
-import { bookingsAPI, adminAPI } from '../utils/api';
+import { bookingsAPI } from '../utils/api';
 import { FaUser, FaStar, FaArrowLeft, FaQuoteLeft } from 'react-icons/fa';
 import Card from '../Components/Card';
 import Button from '../Components/Button';
@@ -11,7 +10,6 @@ function ProviderProfile() {
     const { id } = useParams();
     const [reviews, setReviews] = useState([]);
     const [stats, setStats] = useState({ averageRating: 0, totalReviews: 0 });
-    const [provider, setProvider] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
 

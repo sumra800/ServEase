@@ -4,6 +4,7 @@ import { paymentsAPI } from '../utils/api';
 
 function PaymentModal({ isOpen, onClose, bookingId, amount, onPaymentSuccess }) {
   const [paymentMethod, setPaymentMethod] = useState('jazzcash');
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [step, setStep] = useState(1); // 1: select method, 2: payment form, 3: success
 
@@ -149,6 +150,7 @@ function PaymentModal({ isOpen, onClose, bookingId, amount, onPaymentSuccess }) 
             onSubmit={handleMobilePayment}
             amount={amount}
             onBack={() => setStep(1)}
+            isLoading={loading}
           />
         )}
 
@@ -157,6 +159,7 @@ function PaymentModal({ isOpen, onClose, bookingId, amount, onPaymentSuccess }) 
             onSubmit={handleBankTransfer}
             amount={amount}
             onBack={() => setStep(1)}
+            isLoading={loading}
           />
         )}
 
@@ -185,7 +188,7 @@ function PaymentModal({ isOpen, onClose, bookingId, amount, onPaymentSuccess }) 
   );
 }
 
-function MobileWalletForm({ method, onSubmit, amount, onBack }) {
+function MobileWalletForm({ method, onSubmit, amount, onBack, isLoading }) {
   const [formData, setFormData] = useState({
     mobileNumber: '',
     transactionId: '',
@@ -248,16 +251,17 @@ function MobileWalletForm({ method, onSubmit, amount, onBack }) {
         </button>
         <button
           type="submit"
-          className="flex-1 bg-primary-600 hover:bg-primary-700 text-white py-3 rounded-lg font-semibold transition"
+          disabled={isLoading}
+          className="flex-1 bg-primary-600 hover:bg-primary-700 text-white py-3 rounded-lg font-semibold transition disabled:opacity-50"
         >
-          Submit Payment
+          {isLoading ? 'Processing...' : 'Submit Payment'}
         </button>
       </div>
     </form>
   );
 }
 
-function BankTransferForm({ onSubmit, amount, onBack }) {
+function BankTransferForm({ onSubmit, amount, onBack, isLoading }) {
   const [formData, setFormData] = useState({
     transactionId: '',
     bankName: '',
@@ -328,9 +332,10 @@ function BankTransferForm({ onSubmit, amount, onBack }) {
         </button>
         <button
           type="submit"
-          className="flex-1 bg-primary-600 hover:bg-primary-700 text-white py-3 rounded-lg font-semibold transition"
+          disabled={isLoading}
+          className="flex-1 bg-primary-600 hover:bg-primary-700 text-white py-3 rounded-lg font-semibold transition disabled:opacity-50"
         >
-          Submit
+          {isLoading ? 'Processing...' : 'Submit'}
         </button>
       </div>
     </form>

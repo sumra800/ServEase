@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { FaUser, FaCalendarAlt, FaClock, FaCheckCircle } from 'react-icons/fa';
 import { adminAPI, bookingsAPI } from '../../utils/api';
 
 function BookingManagement() {

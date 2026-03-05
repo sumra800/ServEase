@@ -12,6 +12,8 @@ function UserManagement() {
     page: 1,
   });
   const [pagination, setPagination] = useState({});
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const fetchUsers = async () => {
     try {
@@ -153,8 +155,8 @@ function UserManagement() {
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{user.phone}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`px-2 py-1 text-xs rounded-full ${user.role === 'admin' ? 'bg-purple-100 text-purple-800' :
-                        user.role === 'staff' ? 'bg-blue-100 text-blue-800' :
-                          'bg-gray-100 text-gray-800'
+                      user.role === 'staff' ? 'bg-blue-100 text-blue-800' :
+                        'bg-gray-100 text-gray-800'
                       }`}>
                       {user.role}
                     </span>
@@ -164,8 +166,8 @@ function UserManagement() {
                       <button
                         onClick={() => handleVerify(user._id)}
                         className={`flex items-center gap-1 px-2 py-1 text-xs rounded ${user.isVerified
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-yellow-100 text-yellow-800'
+                          ? 'bg-green-100 text-green-800'
+                          : 'bg-yellow-100 text-yellow-800'
                           }`}
                       >
                         {user.isVerified ? (

@@ -46,6 +46,10 @@ app.get('/', (req, res) => {
   res.json({ status: 'OK', message: 'ServEase API is running. Access endpoints at /api' });
 });
 
+app.get('/api', (req, res) => {
+  res.json({ status: 'OK', message: 'ServEase API is running. Direct access to /api is intended for health checks.' });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', message: 'ServEase API is running' });
 });

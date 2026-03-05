@@ -73,8 +73,8 @@ function NavBar() {
                 <Link
                   to={link.path}
                   className={`text-base font-medium transition-colors hover:text-primary-600 ${location.pathname === link.path
-                      ? "text-primary-600"
-                      : "text-neutral-600"
+                    ? "text-primary-600"
+                    : "text-neutral-600"
                     }`}
                 >
                   {link.name}
@@ -88,8 +88,8 @@ function NavBar() {
                   <Link
                     to="/dashboard"
                     className={`text-base font-medium transition-colors hover:text-primary-600 ${location.pathname === "/dashboard"
-                        ? "text-primary-600"
-                        : "text-neutral-600"
+                      ? "text-primary-600"
+                      : "text-neutral-600"
                       }`}
                   >
                     <FaUser className="inline mr-1" />

@@ -30,9 +30,9 @@ function Login() {
     e.preventDefault();
     dispatch(clearError());
 
-    const result = await dispatch(loginUser({ 
-      email: formData.email, 
-      password: formData.password 
+    const result = await dispatch(loginUser({
+      email: formData.email,
+      password: formData.password
     }));
 
     if (loginUser.fulfilled.match(result)) {

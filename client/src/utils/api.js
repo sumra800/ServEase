@@ -194,7 +194,8 @@ export const profileAPI = {
     formData.append('avatar', file);
 
     const token = localStorage.getItem('servEaseToken');
-    const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000'}/api/auth/avatar`, {
+    const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    const response = await fetch(`${apiBase}/api/auth/avatar`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,

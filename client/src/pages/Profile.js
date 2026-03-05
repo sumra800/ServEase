@@ -30,7 +30,8 @@ function Profile() {
 
   const fetchServices = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/services`);
+      const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiBase}/api/services`);
       const data = await response.json();
       if (data.success) {
         setServices(data.services);
@@ -49,9 +50,10 @@ function Profile() {
         address: currentUser.address || '',
       });
       if (currentUser.avatar) {
+        const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
         const avatarUrl = currentUser.avatar.startsWith('http')
           ? currentUser.avatar
-          : `${process.env.REACT_APP_API_URL || 'http://localhost:5000'}${currentUser.avatar}`;
+          : `${apiBase}${currentUser.avatar}`;
         setAvatarPreview(avatarUrl);
       }
       if (currentUser.role === 'staff' && currentUser.servicesOffered) {

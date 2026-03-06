@@ -1,5 +1,6 @@
 // API Configuration
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_BASE_URL = `${API_URL}/api`;
 
 async function apiRequest(endpoint, options = {}) {
   const url = `${API_BASE_URL}${endpoint}`;
@@ -194,8 +195,7 @@ export const profileAPI = {
     formData.append('avatar', file);
 
     const token = localStorage.getItem('servEaseToken');
-    const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-    const response = await fetch(`${apiBase}/api/auth/avatar`, {
+    const response = await fetch(`${API_BASE_URL}/auth/avatar`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,

@@ -1,5 +1,5 @@
 // API Configuration
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_URL = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace(/\/$/, '');
 const API_BASE_URL = `${API_URL}/api`;
 
 async function apiRequest(endpoint, options = {}) {
